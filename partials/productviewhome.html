@@ -1,0 +1,14 @@
+<div class="onepiece" ng-controller="basketctrl">
+  <div class="row col-lg-12 justify-content-center">
+    <div ng-repeat="item in products" class=" prod col-lg-4">
+      <div  class="container">
+        <img class="img-fluid" src="assets/img/{{item.src}}" alt="" />
+        <p>{{item.name}}</p>
+        <p>{{item.descript}}</p>
+        <p>{{item.ref}}</p>
+        <p>{{item.price}}</p>
+        <button type="button" class="btn btn-info" ng-click="send(item)">Ajouter au panier</button>
+      </div>
+    </div>
+  </div>
+</div>

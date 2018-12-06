@@ -3,11 +3,11 @@
 <head>
   <meta charset="utf-8" />
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-  <script link rel="stylesheet" href="https://bootswatch.com/4/cyborg/bootstrap.min.css"></script>
+  <link rel="stylesheet" href="https://bootswatch.com/4/cyborg/bootstrap.min.css">
   <title>projet Angular</title>
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
-<body>
+<body ng-controller="onectrl">
   <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <a class="navbar-brand" href="#">Navbar</a>
@@ -17,118 +17,52 @@
       <div class="collapse navbar-collapse" id="navbarColor02">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="#!home">Home<span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">One-Piece</a>
+            <a class="nav-link" href="#!productview">One-Piece</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">DragonBall</a>
+            <a class="nav-link" href="#!db">DragonBall</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Attack On Titan</a>
+            <a class="nav-link" href="#!aot">Attack On Titan</a>
           </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-          <button class="btn btn-secondary my-2 my-sm-0" type="submit">PANIER</button>
+        <form action="#" class="form-inline my-2 my-lg-0">
+          <button ng-click="showModal()" class="btn btn-secondary my-2 my-sm-0" type="submit">PANIER</button>
         </form>
       </div>
     </nav>
   </header>
   <div class="modal">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <p>Modal body text goes here.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary">Save changes</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">PANIER</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" ng-repeat="name in nameList">
+          <p>{{name}}</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary">PAYER</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
-  <div>
-    <div ng-controller="onectrl" class="onepiece">
-      <div class="row col-lg-12 justify-content-center">
-        <div ng-repeat="item in products" class=" prod  col-lg-4">
-          <div  class="container">
-            <img class="img-fluid" src="assets/img/{{item.src}}" alt="">
-            <p>{{item.name}}</p>
-            <p>{{item.descript}}</p>
-            <p>{{item.ref}}</p>
-            <button type="button" class="btn btn-info">Ajouter au panier</button>
-          </div>
-        </div>
-      <div class=" prod col-lg-4">
-        <div class="container">
-          <img class="img-fluid" src="assets/img/{{src}}" alt="">
-          <p>{{name}}</p>
-          <p>{{descript}}</p>
-          <p>{{ref}}</p>
-          <button type="button" class="btn btn-info">Ajouter au panier</button>
-        </div>
-      </div>
-    <div class=" prod col-lg-4">
-      <div class="container">
-        <img class="img-fluid" src="assets/img/{{src}}" alt="">
-        <p>{{name}}</p>
-        <p>{{descript}}</p>
-        <p>{{ref}}</p>
-        <button type="button" class="btn btn-info">Ajouter au panier</button>
-      </div>
-      </div>
-    </div>
-    <div class="row col-lg-12 justify-content-center">
-      <div class=" prod col-lg-4">
-        <div class="container">
-          <img class="img-fluid" src="assets/img/{{src}}" alt="">
-          <p>{{name}}</p>
-          <p>{{descript}}</p>
-          <p>{{ref}}</p>
-          <button type="button" class="btn btn-info">Ajouter au panier</button>
-        </div>
-      </div>
-      <div class=" prod col-lg-4">
-        <div class="container">
-          <img class="img-fluid" src="assets/img/{{src}}" alt="">
-          <p>{{name}}</p>
-          <p>{{descript}}</p>
-          <p>{{ref}}</p>
-          <button type="button" class="btn btn-info">Ajouter au panier</button>
-        </div>
-      </div>
-      <div class=" prod col-lg-4">
-        <div class="container">
-          <img class="img-fluid" src="assets/img/{{src}}" alt="">
-          <p>{{name}}</p>
-          <p>{{descript}}</p>
-          <p>{{ref}}</p>
-          <button type="button" class="btn btn-info">Ajouter au panier</button>
-        </div>
-      </div>
-    </div>
-    </div>
-
-
-
-
-
-
-
-
-
+  <div ng-view>
   </div>
-  <script src="assets/js/Angularjs-1.7.5.js"></script>
-  <script src="assets/js/angularroute.js"></script>
-  <script src="assets/js/content.json"></script>
+  <script src="jquery-3.2.1.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.min.js"></script>
+  <script src="https://code.angularjs.org/1.6.3/angular-route.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  <script src="content.json"></script>
   <script type="text/javascript" src="assets/js/script.js"></script>
-
 </body>
 </html>
